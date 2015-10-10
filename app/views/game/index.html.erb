@@ -1,0 +1,149 @@
+<h3 style="text-align: center"><%= t('start_game') %></h3>
+
+<%= content_tag "div", '', id: "content", data: {alive: @conf.alive, die: @conf.die} %>
+<% if @coordinates %>
+    <%= content_tag "div", '', id: "preset", data: {coordinates: @coordinates} %>
+<% end %>
+
+<div class="row">
+  <div class="col-lg-8 col-lg-offset-2 col-centered">
+    <button id="demo" class="game_button">PlayDemo</button>
+    <button id="pause" style="display: none" class="game_button">Pause</button>
+    <button id="play" class="game_button">Play</button>
+    <button id="randomSeed" class="game_button">RandomSeed</button>
+    <button id="next" class="game_button">NextStep</button>
+    <button id="empty" class="game_button">Empty field</button>
+    <button id="mute" class="game_button" onClick="mute()">Mute</button>
+  </div>
+</div>
+
+
+<div id="div2"></div>
+
+
+<style>
+    #div2{position: relative;height:600px; border:1px solid black;padding:0; z-index:2; overflow:hidden; display:block;}
+    #div1{position: absolute;z-index:1}
+</style>
+<script>
+
+    var _startX = 0;
+    var _startY = 0;
+    var _offsetX = 0;
+    var _offsetY = 0;
+    var _dragElement;
+    document.onmousedown = OnMouseDown;
+    document.onmouseup = OnMouseUp;
+
+    function OnMouseDown(event){
+        document.onmousemove = OnMouseMove;
+        _startX = event.clientX;
+        _startY = event.clientY;
+        _offsetX = document.getElementById('div1').offsetLeft;
+        _offsetY = document.getElementById('div1').offsetTop;
+        _dragElement = document.getElementById('div1');
+
+    }
+
+    function OnMouseMove(event){
+        _dragElement.style.left = (_offsetX + event.clientX - _startX) + 'px';
+        _dragElement.style.top = (_offsetY + event.clientY - _startY) + 'px';
+    }
+
+    function OnMouseUp(event){
+        document.onmousemove = null;
+        _dragElement=null;
+    }
+
+</script>
+
+<script type="text/javascript">
+    var json = $("#preset").data('coordinates')
+
+    var from_live_to_die = $("#content").data('die')
+    var from_die_to_live = $("#content").data('alive')
+
+    obj = new GameOfLife(screen.width*1.5, screen.height*1.5, 12,
+            from_live_to_die, from_die_to_live);
+
+    obj.setPreset(json);
+
+    $("#pause").live('click', function () {
+        $("#pause").hide();
+        $("#play").show();
+        $("#demo").show();
+        $("#empty").show();
+        $("#randomSeed").show();
+        $("#next").show();
+        pause_audio();
+
+    });
+
+    $("#play").live('click', function () {
+        $("#play").hide();
+        $("#demo").hide();
+        $("#empty").hide();
+        $("#randomSeed").hide();
+        $("#next").hide();
+        $("#pause").show();
+        obj.play();
+        play_audio();
+    });
+
+    $("canvas").live('click', function (event) {
+
+        var m=$("canvas").offset();
+        var x = event.pageX - m.left;
+        var y = event.pageY - m.top;
+        var row = Math.floor(y / obj.cellSize);
+        var col = Math.floor(x / obj.cellSize);
+        obj.setCell(row, col);
+        obj.drawGrid();
+    });
+
+    $("#demo").live('click', function () {
+        obj.startDemo();
+        $("#play").hide();
+        $("#demo").hide();
+        $("#empty").hide();
+        $("#randomSeed").hide();
+        $("#next").hide();
+        $("#pause").show();
+        play_audio();
+    });
+
+    $("#randomSeed").live('click', function () {
+        obj.demo();
+    });
+
+    $("#pause").live('click', function () {
+        obj.pauseDemo();
+    });
+
+    $("#next").live('click', function () {
+        obj.nextStep();
+    });
+
+    $("#empty").live('click', function () {
+        obj.emptyField();
+    });
+</script>
+
+<script type="text/javascript">
+
+    var audio = new Audio("/assets/song.mp3");
+    function play_audio() {
+        audio.play();
+    }
+    function pause_audio() {
+        audio.pause();
+    }
+    function mute() {
+        audio.muted = !audio.muted;
+    }
+
+</script>
+
+
+
+

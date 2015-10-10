@@ -1,0 +1,54 @@
+<h1 style="text-align: center"><%= t('admin_page') %></h1>
+
+<div class="row" style="border-bottom: 3px solid #c0c0c0">
+
+  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+    <b><%= t('name') %></b>
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+    <b><%= t('your_role') %></b>
+  </div>
+
+
+</div>
+
+<% @users.each do |u| %>
+
+    <div class="row" style="border-bottom: 1px dotted #c0c0c0">
+
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <%= u.name %>
+      </div>
+
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <% if u.isAdmin %>
+            <%= t('admin') %>
+        <% else %>
+            <%= t('user') %>
+        <% end %>
+      </div>
+
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <% if current_user.id != u.id %>
+            <%= link_to t('destroy'),
+                        {:controller => 'manage', :action => 'destroy', :id => u.id},
+                        {:confirm => 'Are you sure?', :method => :delete} %>
+        <% end %>
+      </div>
+
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <% if current_user.id != u.id %>
+            <% if u.isAdmin %>
+                <%= link_to t('make user'), {:controller => 'manage', :action => 'make_role',
+                                             :id => u.id, :role => 'admin'}, {:method => :post} %>
+            <% else %>
+                <%= link_to t('grant admin'), {:controller => 'manage', :action => 'make_role',
+                                               :id => u.id, :role => 'user'}, {:method => :post} %>
+            <% end %>
+        <% end %>
+      </div>
+
+    </div>
+<% end %>
+
+

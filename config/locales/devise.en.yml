@@ -1,0 +1,120 @@
+# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+
+en:
+  devise:
+    confirmations:
+      confirmed: "Your account was successfully confirmed."
+      send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
+      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes."
+    failure:
+      already_authenticated: "You are already signed in."
+      inactive: "Your account is not activated yet."
+      invalid: "Invalid email or password."
+      locked: "Your account is locked."
+      last_attempt: "You have one more attempt before your account will be locked."
+      not_found_in_database: "Invalid email or password."
+      timeout: "Your session expired. Please sign in again to continue."
+      unauthenticated: "You need to sign in or sign up before continuing."
+      unconfirmed: "You have to confirm your account before continuing."
+    mailer:
+      confirmation_instructions:
+        subject: "Confirmation instructions"
+      reset_password_instructions:
+        subject: "Reset password instructions"
+      unlock_instructions:
+        subject: "Unlock Instructions"
+    omniauth_callbacks:
+      failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
+      success: "Successfully authenticated from %{kind} account."
+    passwords:
+      no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
+      send_instructions: "You will receive an email with instructions on how to reset your password in a few minutes."
+      send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
+      updated: "Your password was changed successfully. You are now signed in."
+      updated_not_active: "Your password was changed successfully."
+    registrations:
+      destroyed: "Bye! Your account was successfully cancelled. We hope to see you again soon."
+      signed_up: "Welcome! You have signed up successfully."
+      signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
+      signed_up_but_locked: "You have signed up successfully. However, we could not sign you in because your account is locked."
+      signed_up_but_unconfirmed: "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
+      update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address."
+      updated: "You updated your account successfully."
+    sessions:
+      signed_in: "Signed in successfully."
+      signed_out: "Signed out successfully."
+    unlocks:
+      send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
+      send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
+      unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+  errors:
+    messages:
+      already_confirmed: "was already confirmed, please try signing in"
+      confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
+      expired: "has expired, please request a new one"
+      not_found: "not found"
+      not_locked: "was not locked"
+      not_saved:
+        one: "1 error prohibited this %{resource} from being saved:"
+        other: "%{count} errors prohibited this %{resource} from being saved:"
+
+        # Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+
+ru:
+  devise:
+    confirmations:
+      confirmed: "Ваш аккаунт успешно подтвержден."
+      send_instructions: "Вы получите email сообщение с инструкцией для подтверждения регистрации."
+      send_paranoid_instructions: "Если Ваш адрес имеется в нашей базе, Вы получите сообщение с инструкцией для подтверждения вашего акканта."
+    failure:
+      already_authenticated: "Вы уже вошли в свой аккаунт."
+      inactive: "Ваш аккаунт еще не активирован."
+      invalid: "Неверный email или пароль."
+      locked: "Ваш аккаунт заблокирован."
+      last_attempt: "У вас осталось 1 или более попыток."
+      not_found_in_database: "Неверный email или пароль."
+      timeout: "Время Вашей сессии истекло, пожалуйста войдите снова."
+      unauthenticated: "Вы должны авторизоваться для продолжения."
+      unconfirmed: "Вы должны подтвердить свой аккаунт, чтобы продолжить."
+    mailer:
+      confirmation_instructions:
+        subject: "Инструкции для подтверждения."
+      reset_password_instructions:
+        subject: "Инструкции для сброса пароля."
+      unlock_instructions:
+        subject: "Инструкции для разблокирования."
+    omniauth_callbacks:
+      failure: "Не получается авторизовать Вас из %{kind} по причину \"%{reason}\"."
+      success: "Успешно авторизован под %{kind} аккаунтом."
+    passwords:
+      no_token: "Это нужно переписать.You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
+      send_instructions: "Вы получить письмо с инструкцией сброса пароля в течение нескольких минут."
+      send_paranoid_instructions: "Если Ваш email есть в нашей базе, то вы получить письмо со ссылкой для восстановления пароля."
+      updated: "Ваш пароль был успешно изменет.Вы авторизованы."
+      updated_not_active: "Ваш пароль был успешно изменен."
+    registrations:
+      destroyed: "Пока!Вас аккаунт был успешно удален, мы надеемся увидеть Вас вскоре."
+      signed_up: "Добро пожаловать! Вы успешно авторизованы."
+      signed_up_but_inactive: "Это нужно переписать.You have signed up successfully. However, we could not sign you in because your account is not yet activated."
+      signed_up_but_locked: "Это нужно переписать.You have signed up successfully. However, we could not sign you in because your account is locked."
+      signed_up_but_unconfirmed: "Сообщение со ссылкой для подтверждения было выслано Вам на почтовый ящик."
+      update_needs_confirmation: "Это нужно переписать.You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address."
+      updated: "Вы успешно обновили свой аккаунт.You updated your account successfully."
+    sessions:
+      signed_in: "Вы успешно авторизованы."
+      signed_out: "Вы вышли из своего аккаунта."
+    unlocks:
+      send_instructions: "Вы получить письмо на свой почтовый ящик, с инструкцией по разблокированию своего акканта в течение нескольких минут."
+      send_paranoid_instructions: "Если Ваш аккаунт существует, Вы получите письмо с инструкцией для разблокирования своего аккаунта."
+      unlocked: "Ваш аккаунт был успешно раблокирован.Пожалуйста выполните авторизацию для продолжения."
+  errors:
+    messages:
+      already_confirmed: "уже подтвержден, пожалуйста попробуйте авторизоватья was already confirmed, please try signing in"
+      confirmation_period_expired: "должен быть подтвержден в течение %{period}, пожалуйста завтросите новый "
+      expired: "истек, пожалуйста запросите новый "
+      not_found: "Страница не найдена."
+      not_locked: "was not locked"
+      not_saved:
+        one: "1 ошибка запрещает сохранить %{resource} :"
+        other: "%{count} ошибок запрещают сохранить %{resource} :"
+

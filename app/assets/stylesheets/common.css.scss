@@ -1,0 +1,103 @@
+@import "canvas";
+
+@media (min-width: 1000px) {
+  .navbar-header {
+    float: left;
+  }
+}
+
+.link{
+  display: block;
+  padding: 5px 0;
+}
+
+.link:hover {
+  display: block;
+  background-color: #BBBBBB;
+  text-decoration: none;
+}
+
+.label-info {
+  background-color: transparent;
+}
+
+.query_text {
+  height:30px;
+  border:2px solid #000000;
+  color:#000000;
+}
+
+.search {
+  height:30px;
+  padding:0;
+  border:2px solid #000000;
+}
+
+.search:hover {
+  font-weight: bold;
+}
+
+.row {
+    margin-top:30px;
+}
+
+.container {
+    min-height: 600px;
+}
+
+.theme-form {
+  color: black;
+}
+
+#error_explanation {
+    color:red;
+}
+
+.error {
+  color: red;
+}
+
+.alert {
+    color: orange;
+}
+
+.notice {
+    color:green;
+}
+
+
+/* for game buttons */
+
+.game_button {
+  display: block;
+  float: left;
+  border:3px solid #000000;
+  padding:0
+}
+
+.game_button:hover {
+  font-weight: bold;
+}
+
+/* end */
+
+
+/* banner */
+#myGallery {
+    height: 500px;
+    position: relative;
+    max-width: 70%;
+    /*width:50%*/
+    margin: 0 auto;
+}
+#myGallery img {
+    display: none;
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#myGallery img.active {
+    display: block;
+}
+/* end banner */

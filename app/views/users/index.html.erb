@@ -1,0 +1,11 @@
+<h1>All users here</h1>
+
+<table>
+  <% @user.each do |u| %>
+      <tr>
+        <td><%= u.name %></td><td> | <%=u.email %></td><td><%= link_to t('message'), '#' %></td>
+      </tr>
+  <% end %>
+</table>
+
+

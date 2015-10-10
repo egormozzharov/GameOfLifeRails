@@ -1,0 +1,61 @@
+<h3 style="text-align: center"><%= t('all_confs') %></h3>
+
+
+<%= link_to t('to_my_configs'), confs_path, :class => 'link' %>
+
+<div class="row" style="border-bottom: 3px solid #c0c0c0">
+
+  <div class="col-lg-1 col-md-1 col-sm-2 col-xs-3">
+    <b><%= t('name') %></b>
+  </div>
+  <div class="col-lg-2 col-md-2 col-sm-2 hidden-xs">
+    <b><%= t('desc') %></b>
+  </div>
+  <div class="col-lg-1 col-md-1 hidden-sm hidden-xs">
+    <b><%= t('die') %></b>
+  </div>
+  <div class="col-lg-1 col-md-1 hidden-sm hidden-xs">
+    <b><%=t('alive') %></b>
+  </div>
+  <div class="col-lg-1 col-md-1 col-sm-1 hidden-xs">
+    <b><%= t('user_id') %></b>
+  </div>
+
+
+</div>
+
+<% @all_configs.each do |u| %>
+
+    <div class="row" style="border-bottom: 1px dotted #c0c0c0">
+
+      <div class="col-lg-1 col-md-1 col-sm-2 col-xs-3">
+        <%= u.name %>
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-2 hidden-xs">
+        <%= u.desc %>
+      </div>
+      <div class="col-lg-1 col-md-1 hidden-sm hidden-xs">
+        <%=u.die %>
+      </div>
+      <div class="col-lg-1 col-md-1 hidden-sm hidden-xs">
+        <%=u.alive %>
+      </div>
+      <div class="col-lg-1 col-md-1 col-sm-1 hidden-xs">
+        <%= u.user_id %>
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-5">
+        <%= link_to t('start_with_this_config'), presets_path(u), method: :get %>
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3">
+        <%= link_to t('add_to_my_confs'), u, method: :post %>
+      </div>
+
+      <div class="col-lg-1 col-md-1 col-sm-1 hidden-xs">
+        <% if current_user.isAdmin? %>
+            <%= link_to t('destroy'), u, method: :delete, data: { confirm: t('sure') } %>
+        <%end%>
+      </div>
+
+    </div>
+<% end %>
+

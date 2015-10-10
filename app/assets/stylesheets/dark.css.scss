@@ -1,0 +1,37 @@
+@import "bootstrap";
+@import "bootstrap/theme";
+
+
+body {
+  background-color: #666666;
+  color: #ffffff;
+}
+
+body a {
+  color: white;
+  font-weight: bold;
+}
+
+.label-info {
+  color:white;
+}
+
+.game_button {
+  background-color: #c0c0c0;
+}
+
+.game_button:hover {
+  background-color: #ffffff;
+}
+
+.container {
+  background-color:  #2E2F30;
+}
+
+button {
+  color: #000000;
+}
+
+#error_explanation {
+  color:red;
+}

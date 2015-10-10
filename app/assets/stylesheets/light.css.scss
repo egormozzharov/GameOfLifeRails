@@ -1,0 +1,35 @@
+@import "bootstrap";
+@import "bootstrap/theme";
+
+
+body {
+  background-color: #ffffff;
+  color: #000
+}
+
+.container {
+  background-color: #ffffff;
+}
+
+.label-info {
+  color:black;
+}
+
+body a {
+  color: black;
+  font-weight: bold;
+}
+
+
+button {
+  color: black;
+}
+
+.error {
+  display:inline;
+  color: red;
+}
+
+#error_explanation {
+  color:red;
+}

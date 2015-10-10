@@ -1,0 +1,95 @@
+<div class="row">
+  <div class="col-lg-12 col-md-12  col-sm-12 col-xs-12">
+    <%= link_to t('to_my_presets'), presets_path, :class => 'link' %>
+  </div>
+</div>
+
+<div class="col-lg-12 col-md-12  col-sm-12 col-xs-12">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+    <h3 class="panel-title">
+      <strong><%= t('new_preset') %></strong>
+    </h3></div>
+    <div class="panel-body">
+      <%= form_for @new_preset do |f| %>
+          <div  id="message">
+          </div>
+
+          <div class="form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name, :autofocus => true, class: 'form-control', placeholder: "Name" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :desc %>
+            <%= f.text_area :desc, :autofocus => true, class: 'form-control', placeholder: "Description" %>
+          </div>
+
+         <% end %>
+      <div class="form-group">
+        <button id="pull-down">Go</button>
+        <button id="empty" style="display: none">Empty field</button>
+        <button id="save" style="display: none">Save</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div id="div2"></div>
+
+<style>
+    #div2{position: static; border:1px solid transparent; z-index:2; overflow:scroll; display:block;}
+    #div1{z-index:1}
+</style>
+
+
+
+<script type="text/javascript">
+
+    var obj;
+
+    $("canvas").live('click', function (event) {
+        var canvas = document.getElementsByTagName('canvas')[0];
+        var x = event.pageX - canvas.offsetLeft;
+        var y = event.pageY - canvas.offsetTop;
+
+        var row = Math.floor(y/obj.cellSize);
+        var col = Math.floor(x/obj.cellSize);
+        obj.setCell(row, col);
+        obj.drawGrid();
+    });
+//
+
+    $('#save').click(function(event) {
+        var url = '/test';
+        var arr = obj.getAliveSells()
+        var value_desc = $('#preset_desc').val()
+        var value_name = $('#preset_name').val()
+
+        $.ajax({
+            type: "get",
+            url: url,
+            data: {grid: arr, desc: value_desc, name: value_name}
+        });
+    });
+
+    $('#pull-down').click(function(event) {
+        $('#pull-down').hide()
+        $('#empty').show()
+        $('#save').show()
+        obj = new GameOfLife(screen.width - screen.width / 5, screen.height, 12,
+                "", "");
+        event.preventDefault();
+        var n = $(document).height();
+        $('html, body').animate({ scrollTop: n }, 500);
+    });
+
+
+
+    $("#empty").live('click', function () {
+        obj.emptyField();
+    });
+
+</script>

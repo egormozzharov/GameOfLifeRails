@@ -1,0 +1,10 @@
+canvas {
+    /*border: 1px solid rgba(242, 198, 65, 1);*/
+    margin: 0px auto 0px auto;
+    display: block;
+}
+
+button {
+    height: 30px;
+    width: 100px;
+}

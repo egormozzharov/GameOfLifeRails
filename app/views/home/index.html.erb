@@ -1,0 +1,29 @@
+
+<h1 style="text-align: center"><%= t('home_page_welcome') %></h1>
+
+  <div id="myGallery">
+    <%= image_tag 'Untitled.jpg', :class => 'active' %>
+    <%= image_tag 'Untitled1.jpg' %>
+    <%= image_tag 'Untitled2.jpg' %>
+    <%= image_tag 'Untitled3.jpg' %>
+    <%= image_tag 'Untitled4.jpg' %>
+  </div>
+
+
+
+<script type="text/javascript">
+    function swapImages() {
+        var $active = $('#myGallery .active');
+        var $next = ($('#myGallery .active').next().length > 0) ? $('#myGallery .active').next() : $('#myGallery img:first');
+        $active.fadeOut(function () {
+            $active.removeClass('active');
+            $next.fadeIn().addClass('active');
+        });
+    }
+
+    $(document).ready(function () {
+        setInterval('swapImages()', 3000);
+    });
+
+
+</script>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= t('title') %></title>
+
+  <% if user_signed_in? %>
+      <%= stylesheet_link_tag current_user.theme_color, media: 'all', 'data-turbolinks-track' => true %>
+  <% else %>
+      <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <% end %>
+  <%= stylesheet_link_tag 'common', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <%= csrf_meta_tags %>
+</head>
+<body style="background-color: #F7B7E1; margin-top:50px">
+
+<div class="container">
+<nav class="navbar navbar-fixed-top navbar-default <%= nav_bar_theme %>" role="navigation">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse"
+            data-target="#example-navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+
+    <a class="navbar-brand" href='/confs/'><b><%= t('logo') %></b></a>
+  </div>
+
+
+
+
+
+  <div class="collapse navbar-collapse" id="example-navbar-collapse">
+    <ul class="nav navbar-nav">
+      <li><%= link_to t('start_game'), game_index_path %></li>
+      <li><%= link_to t('search'), search_path %></li>
+      <li><%= link_to t('common_chat'), common_chat_path %></li>
+      <% if user_signed_in? %>
+      <% if current_user.isAdmin %>
+          <li><%= link_to t('admin_page'), manage_index_path %></li>
+      <%end%>
+      <%end%>
+
+      <% if user_signed_in? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <%= t('theme_color') %> <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <% THEMES.each do |key, value| %>
+                  <li><%= link_to value, home_get_path(:theme => value) %></li>
+              <% end %>
+            </ul>
+          </li>
+      <% end %>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <%= t('language') %> <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <% LANGUAGES.each do |key, value| %>
+              <li><%= link_to key, home_get_path(:set_locale => value) %></li>
+          <% end %>
+        </ul>
+      </li>
+
+    </ul>
+
+    <% if user_signed_in? %>
+        <div class="navbar-right">
+          <p class="navbar-text"><%= link_to t('sign_out'), destroy_user_session_path, :method => :delete, :class => "navbar-link" %></p>
+        </div>
+        <div class="navbar-right">
+          <p class="navbar-text"><%= t('hello') + ", " %><%= current_user.name %></p>
+        </div>
+        <div class="navbar-right">
+          <% if current_user.isAdmin %>
+              <p class="navbar-text"><%=t('your_role') + ' ' +  t('admin')%></p>
+          <% else %>
+              <p class="navbar-text"><%=t('your_role') + ' ' +  t('user')%></p>
+          <% end %>
+        </div>
+    <% else %>
+        <div class="navbar-right">
+          <p class="navbar-text"><%= link_to t('sign_up'), new_user_registration_path, :class => "navbar-link" %></p>
+        </div>
+        <div class="navbar-right">
+          <p class="navbar-text"><%= link_to t('sign_in'), new_user_session_path, :class => "navbar-link"  %></p>
+        </div>
+    <%end%>
+  </div>
+</nav>
+
+    <%= yield %>
+
+</div>
+</body>
+
+<script>
+    $("#error_explanation").fadeOut(5000, function () {
+    })
+
+    $(".error").fadeOut(5000, function () {
+    })
+
+
+</script>
+</html>

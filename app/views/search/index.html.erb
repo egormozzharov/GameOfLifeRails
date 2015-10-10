@@ -1,0 +1,44 @@
+<div  style="background-color: #666666">
+  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="margin: 45px 0">
+
+    <%= text_field_tag 'query', nil, class: "query_text", placeholder: 'Search' %>
+    <button id="search" class="search">Search</button>
+    <button id="build" class="search">Indexes</button>
+  </div>
+</div>
+<div style="clear: both;height:1px;border-bottom: 3px solid #c0c0c0"></div>
+
+<div id="message"></div>
+
+<script>
+    $('#search').click(function (event) {
+        var url = '/search';
+        var value_query = $('#query').val()
+
+        $.ajax({
+            type: "get",
+            url: url,
+            data: {query: value_query}
+        });
+    });
+
+    $('#build').click(function (event) {
+        var url = '/rebuild';
+
+        $.ajax({
+            type: "get",
+            url: url
+        });
+    });
+</script>
+
+<div id="rebuild" class="notice">
+</div>
+
+<div id="results">
+</div>
+
+
+
+
+

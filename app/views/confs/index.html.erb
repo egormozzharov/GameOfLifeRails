@@ -1,0 +1,169 @@
+<h3 style="text-align: center"><%= t('my_confs') %></h3>
+
+
+<%= link_to t('start_condition'), new_conf_path, :class => 'link' %>
+<%= link_to t('watch_users_configs'), confs_all_confs_path, :class => 'link'%>
+
+<div class="row" style="border-bottom: 3px solid #c0c0c0">
+
+  <div class="col-lg-1 col-md-1 col-sm-2 col-xs-3">
+    <b><%= t('name') %></b>
+  </div>
+  <div class="col-lg-2 col-md-2 col-sm-2 hidden-xs">
+    <b><%= t('desc') %></b>
+  </div>
+  <div class="col-lg-1 col-md-1 hidden-sm hidden-xs">
+    <b><%= t('die') %></b>
+  </div>
+  <div class="col-lg-1 col-md-1 hidden-sm hidden-xs">
+    <b><%=t('alive') %></b>
+  </div>
+
+
+
+</div>
+
+<% @my_configs.each do |u| %>
+
+    <div class="row" style="border-bottom: 1px dotted #c0c0c0">
+
+      <div class="col-lg-1 col-md-1 col-sm-2 col-xs-4">
+        <%= u.name %>
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-2 hidden-xs">
+        <%= u.desc %>
+      </div>
+      <div class="col-lg-1 col-md-1 hidden-sm hidden-xs">
+        <%= u.die %>
+      </div>
+      <div class="col-lg-1 col-md-1 hidden-sm hidden-xs">
+        <%= u.alive %>
+      </div>
+
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
+        <%= link_to t('start_with_this_config'), presets_path(u), method: :get %>
+      </div>
+      <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+        <%= link_to t('destroy'), u, method: :delete, data: {confirm: t('sure')} %>
+      </div>
+
+    </div>
+<% end %>
+
+
+
+
+<a href="#"  class="paulund_modal" style="display: none">Click Here</a>
+
+
+
+<script type="text/javascript">
+
+    (function($){
+
+        // Defining our jQuery plugin
+
+        $.fn.paulund_modal_box = function(prop){
+
+            // Default parameters
+
+            var options = $.extend({
+                height : "250",
+                width : "500",
+                title:"JQuery Modal Box Demo",
+                description: "Example of how to create a modal box.",
+                top: "20%",
+                left: "30%"
+            },prop);
+
+            return this.click(function(e){
+                add_block_page();
+                add_popup_box();
+                add_styles();
+
+                $('.paulund_modal_box').fadeIn();
+            });
+
+            function add_styles(){
+                $('.paulund_modal_box').css({
+                    'position':'absolute',
+                    'left':options.left,
+                    'top':options.top,
+                    'display':'none',
+                    'height': options.height + 'px',
+                    'width': options.width + 'px',
+                    'border':'1px solid #fff',
+                    'box-shadow': '0px 2px 7px #292929',
+                    '-moz-box-shadow': '0px 2px 7px #292929',
+                    '-webkit-box-shadow': '0px 2px 7px #292929',
+                    'border-radius':'10px',
+                    '-moz-border-radius':'10px',
+                    '-webkit-border-radius':'10px',
+                    'background': '#f2f2f2',
+                    'z-index':'50'
+                });
+                $('.paulund_modal_close').css({
+                    'position':'relative',
+                    'top':'-25px',
+                    'left':'20px',
+                    'float':'right',
+                    'display':'block',
+                    'height':'50px',
+                    'width':'50px',
+                    'background': 'url(/assets/close.png) no-repeat'
+                });
+                /*Block page overlay*/
+                var pageHeight = $(document).height();
+                var pageWidth = $(window).width();
+
+                $('.paulund_block_page').css({
+                    'position':'absolute',
+                    'top':'0',
+                    'left':'0',
+                    'background-color':'rgba(0,0,0,0.6)',
+                    'height':pageHeight,
+                    'width':pageWidth,
+                    'z-index':'10'
+                });
+                $('.paulund_inner_modal_box').css({
+                    'background-color':'#fff',
+                    'height':(options.height - 50) + 'px',
+                    'width':(options.width - 50) + 'px',
+                    'padding':'10px',
+                    'margin':'15px',
+                    'border-radius':'10px',
+                    '-moz-border-radius':'10px',
+                    '-webkit-border-radius':'10px'
+                });
+            }
+
+            function add_block_page(){
+                var block_page = $('<div class="paulund_block_page"></div>');
+
+                $(block_page).appendTo('body');
+            }
+
+            function add_popup_box(){
+                var pop_up = $('<div class="paulund_modal_box"><a href="#" class="paulund_modal_close"></a><div class="paulund_inner_modal_box"><h2>' + options.title + '</h2><p>' + options.description + '</p></div></div>');
+                $(pop_up).appendTo('.paulund_block_page');
+
+                $('.paulund_modal_close').click(function(){
+                    $(this).parent().fadeOut().remove();
+                    $('.paulund_block_page').fadeOut().remove();
+                });
+            }
+
+            return this;
+        };
+
+    })(jQuery);
+
+</script>
+
+
+<script>
+    $(document).ready(function(){
+//        $('.paulund_modal').paulund_modal_box();
+//        $('.paulund_modal').click();
+    });
+</script>

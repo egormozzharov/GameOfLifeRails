@@ -1,0 +1,41 @@
+class UsersController < ApplicationController
+  before_action :set_user, :add_email, :except => [:index, :save_email]
+  # before_filter :ensure_valid_email, :except => [:save_email]
+
+  def index
+    @user = User.all
+  end
+
+
+  def add_email
+    render
+  end
+
+
+  def save_email
+    binding.pry
+
+    if params[:user] && params[:user][:email]
+      current_user.email = params[:user][:email]
+      current_user.skip_reconfirmation! # don't forget this if using Devise confirmable
+      respond_to do |format|
+        if current_user.save
+          binding.pry
+          format.html { redirect_to current_user, notice: 'Your email address was successfully updated.' }
+          format.json { head :no_content }
+        else
+          binding.pry
+          format.html { @show_errors = true }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
+      end
+  end
+
+    binding.pry
+  end
+
+  private
+  def set_user
+    @user = User.find(params[:id])
+  end
+end

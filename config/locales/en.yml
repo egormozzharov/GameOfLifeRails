@@ -1,0 +1,83 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  title: "Game of life."
+  signed_in_as: "Signed in as "
+  not_you: "Not you?"
+  sign_out: "Sign out"
+  common_chat: "Common chat"
+  home: "Home page"
+  message: "Send message"
+  sign_up: "Sign up"
+  sign_in: "Sign in"
+  forgot_pas: "Forgot your password?"
+  didnt_receive_conf_instr: "Didn't receive comfirmation instructions?"
+  didnt_receive_unlock_instr: "Didn't receive unlock instructions?"
+  sign_in_with: "Sign in with "
+  home_page_welcome: "Game of Life!"
+  logo: "Life"
+  hello: "Hello "
+  start_game: "Start game"
+  change_pas: "Change your password"
+  resend_conf_instr: "Resend confirmation instructions"
+  start_with_this_config: "Start with this config"
+  new_config: "New config"
+  create: "Create"
+  die_condition: "Amount of neibours when cell dies"
+  alive_condition: "Amount of neibours when cell alives"
+  my_confs: "My configs"
+  my_presets: "My presets"
+  all_confs: "All configs"
+  add_to_my_confs: "Add to my configs"
+  add_to_my_presets: "Add to my presets"
+  config_has_been_added: "Config's been added to your profile"
+  destroy: "Destroy"
+  theme_color: "Theme"
+  language: "Language"
+  start_game: "Start game"
+  start_with_this_preset: "Start with this preset"
+  new_preset: "New preset"
+  start_condition: "Create new rule"
+  watch_users_configs: "All user's rules"
+  watch_users_presets: "All user's presets"
+  start_with_empty_field: "Play on empty field"
+  no_rule: "It's your first game, so you need to specify rule!"
+  choose_rule: "Chooose the rule here"
+  first: "First game"
+  error: "Sorry error occured"
+  all_presets: "All presets"
+  your_role: "Role:"
+  admin: "Admin"
+  user: "User"
+  add_email: "Add email"
+  name: "Name"
+  desc: "Desc"
+  die: "Cell dies"
+  alive: "Cell alives"
+  user_id: "User_id"
+  sure: "Are you sure?"
+  to_my_presets: "To my presets"
+  to_my_configs: "To my configs"
+  search: "Search"
+  admin_page: "Admin page"
+  grant_admin: "Grant admin"
+  make_user: "Make user"
